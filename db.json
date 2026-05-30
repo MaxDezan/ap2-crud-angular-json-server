@@ -1,0 +1,14 @@
+{
+  "livros": [
+    {
+      "id": "1",
+      "isbn": "978-85-359-0277-1",
+      "tituloOriginal": "O Senhor dos Anéis: A Sociedade do Anel",
+      "editora": "HarperCollins Brasil",
+      "numeroPaginas": 576,
+      "idioma": "Português",
+      "formatoFisico": false
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

@@ -1,59 +1,105 @@
-# Ap2CrudAngularJsonServer
+# 📚 Gerenciador de Livros — CRUD Angular + JSON Server
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.8.
+---
 
-## Development server
+## Identificação
 
-To start a local development server, run:
+- **Aluno:** Max Dezan Rossi
+- **Disciplina:** Aplicações Front End
+- **Professor(a):** Lucas Fogaça
+- **Período:** 2025.1
 
-```bash
-ng serve
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Tema do Projeto
 
-## Code scaffolding
+Desenvolvimento de uma aplicação web CRUD (Create, Read, Update, Delete) para gerenciamento de livros, utilizando **Angular** com **Standalone Components** e uma API simulada com **JSON Server**.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## Descrição
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Esta aplicação permite o cadastro, listagem, edição e exclusão de livros. O projeto foi desenvolvido seguindo as boas práticas de **Clean Code**, com separação clara de responsabilidades entre Model, Service e Components.
 
-```bash
-ng generate --help
-```
+A entidade principal é **Livro**, que possui os seguintes campos:
+- **ISBN** — Código identificador do livro
+- **Título Original** — Nome original da obra
+- **Editora** — Editora responsável pela publicação
+- **Número de Páginas** — Quantidade de páginas
+- **Idioma** — Idioma da edição
+- **Formato Físico** — Indica se o livro é físico ou digital
 
-## Building
+A comunicação com a API é feita exclusivamente através de **Services** com `HttpClient`, utilizando a função `inject()` para injeção de dependências. A edição de registros reutiliza o formulário principal, sem uso de `prompt()`.
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## Tecnologias Utilizadas
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+| Tecnologia | Versão | Finalidade |
+|---|---|---|
+| Angular | 21.x | Framework front-end |
+| TypeScript | 5.9.x | Linguagem de programação |
+| JSON Server | 1.x | Simulação de API REST |
+| Concurrently | 9.x | Execução simultânea de scripts |
+| RxJS | 7.8.x | Programação reativa (Observables) |
+| HTML5 / CSS3 | — | Estrutura e estilização |
 
-## Running unit tests
+---
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Como Executar o Projeto
 
-```bash
-ng test
-```
+### Pré-requisitos
 
-## Running end-to-end tests
+- [Node.js](https://nodejs.org/) (versão 18 ou superior)
+- npm (incluído com o Node.js)
 
-For end-to-end (e2e) testing, run:
+### Passo a passo
 
-```bash
-ng e2e
-```
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/MaxDezan/ap2-crud-angular-json-server.git
+   cd ap2-crud-angular-json-server
+   ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+2. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
 
-## Additional Resources
+3. **Execute a aplicação e a API simultaneamente:**
+   ```bash
+   npm run start:all
+   ```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+4. **Acesse no navegador:**
+   - **Aplicação Angular:** [http://localhost:4200](http://localhost:4200)
+   - **API JSON Server:** [http://localhost:3000/livros](http://localhost:3000/livros)
+
+### Scripts disponíveis
+
+| Comando | Descrição |
+|---|---|
+| `npm start` | Inicia apenas o servidor Angular |
+| `npm run api` | Inicia apenas o JSON Server |
+| `npm run start:all` | Inicia ambos simultaneamente |
+| `npm run build` | Gera o build de produção |
+
+---
+
+## Link do Vídeo Demonstrativo
+
+🎥 [](#)
+
+---
+
+## Funcionalidades
+
+-  **Cadastro de livros** — Formulário com validação básica de campos obrigatórios
+-  **Listagem de livros** — Tabela responsiva com todos os registros cadastrados
+-  **Edição de livros** — Reutiliza o formulário principal, preenchendo os dados e atualizando via PUT
+-  **Exclusão de livros** — Confirmação nativa (`confirm()`) antes de remover
+-  **Mensagens de feedback** — Exibição de sucesso ou erro após cada operação
+-  **Estados de carregamento** — Mensagem de "Carregando..." durante requisições
+-  **Estado vazio** — Mensagem de "Nenhum livro cadastrado" quando não há registros
+-  **Layout responsivo** — Adaptação para diferentes tamanhos de tela
+-  **Clean Code** — Separação em Model, Service e Components com injeção de dependências via `inject()`

@@ -1,0 +1,105 @@
+<section class="list-card">
+  <h2>Livros Cadastrados</h2>
+
+  <!-- Estado: Carregando -->
+  @if (carregando) {
+    <div class="estado-msg carregando">
+      <span class="spinner"></span>
+      Carregando...
+    </div>
+  }
+
+  <!-- Estado: Nenhum livro -->
+  @if (!carregando && livros.length === 0) {
+    <div class="estado-msg vazio">
+      📭 Nenhum livro cadastrado.
+    </div>
+  }
+
+  <!-- Lista de livros (Estilo Accordion) -->
+  @if (!carregando && livros.length > 0) {
+    <div class="livros-accordion">
+      @for (livro of livros; track livro.id) {
+        <div class="livro-item" [class.expandido]="expandedLivros[livro.id!]">
+          
+          <!-- Cabeçalho (Sempre visível, altura reduzida) -->
+          <div class="livro-header" (click)="toggleExpand(livro.id!)">
+            <div class="livro-header-left">
+              @if (livro.formatoFisico) {
+                <img class="livro-header-icon-img" src="/book-physical.png" alt="Livro Físico">
+              } @else {
+                <img class="livro-header-icon-img" src="/book-digital.png" alt="Livro Digital">
+              }
+              <span class="livro-titulo">{{ livro.tituloOriginal }}</span>
+            </div>
+            <div class="livro-header-right">
+              <span class="chevron-icon">{{ expandedLivros[livro.id!] ? '▲' : '▼' }}</span>
+            </div>
+          </div>
+
+          <!-- Detalhes (Visíveis apenas quando expandido) -->
+          @if (expandedLivros[livro.id!]) {
+            <div class="livro-detalhes">
+              <div class="detalhes-grid">
+                <div class="detalhe-item">
+                  <span class="detalhe-label">ISBN:</span>
+                  <span class="detalhe-valor mono">{{ livro.isbn }}</span>
+                </div>
+                <div class="detalhe-item">
+                  <span class="detalhe-label">Editora:</span>
+                  <span class="detalhe-valor">{{ livro.editora }}</span>
+                </div>
+                <div class="detalhe-item">
+                  <span class="detalhe-label">Páginas:</span>
+                  <span class="detalhe-valor">{{ livro.numeroPaginas }}</span>
+                </div>
+                <div class="detalhe-item">
+                  <span class="detalhe-label">Idioma:</span>
+                  <span class="detalhe-valor">{{ livro.idioma }}</span>
+                </div>
+                <div class="detalhe-item">
+                  <span class="detalhe-label">Formato:</span>
+                  <span class="badge" [class.fisico]="livro.formatoFisico" [class.digital]="!livro.formatoFisico">
+                    @if (livro.formatoFisico) {
+                      <img class="badge-icon-img" src="/book-physical.png" alt="Físico">
+                      Físico
+                    } @else {
+                      <img class="badge-icon-img" src="/book-digital.png" alt="Digital">
+                      Digital
+                    }
+                  </span>
+                </div>
+              </div>
+
+              <!-- Ações -->
+              <div class="livro-acoes">
+                <button class="btn btn-editar" (click)="onEditar(livro)">✏️ Editar</button>
+                <button class="btn btn-deletar" (click)="onDeletar(livro)">🗑️ Excluir</button>
+              </div>
+            </div>
+          }
+
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Modal de Confirmação de Exclusão -->
+  @if (exibirModalConfirmacao && livroParaExcluir) {
+    <div class="modal-backdrop" (click)="cancelarExclusao()">
+      <div class="modal-container" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h3>⚠️ Confirmar Exclusão</h3>
+        </div>
+        <div class="modal-body">
+          <p>Deseja realmente excluir o livro <strong>"{{ livroParaExcluir.tituloOriginal }}"</strong>?</p>
+          <p class="modal-subtext">Esta ação não poderá ser desfeita.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-deletar" (click)="confirmarExclusao()">Sim, Excluir</button>
+          <button class="btn btn-secondary" (click)="cancelarExclusao()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  }
+</section>
