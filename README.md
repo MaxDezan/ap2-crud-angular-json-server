@@ -86,6 +86,16 @@ A comunicação com a API é feita exclusivamente através de **Services** com `
 
 ---
 
+## Deploy na Vercel
+
+O projeto também está hospedado na Vercel para acesso público, utilizando uma Serverless Function como backend:
+
+🔗 **[Acessar aplicação](#)**
+
+> Substitua o link acima pela URL gerada após o deploy no Vercel.
+
+---
+
 ## Link do Vídeo Demonstrativo
 
 🎥 [](#)
@@ -103,3 +113,4 @@ A comunicação com a API é feita exclusivamente através de **Services** com `
 -  **Estado vazio** — Mensagem de "Nenhum livro cadastrado" quando não há registros
 -  **Layout responsivo** — Adaptação para diferentes tamanhos de tela
 -  **Clean Code** — Separação em Model, Service e Components com injeção de dependências via `inject()`
+

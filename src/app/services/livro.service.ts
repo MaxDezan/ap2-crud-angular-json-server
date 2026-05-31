@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Livro } from '../models/livro';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Livro } from '../models/livro';
 export class LivroService {
 
   private readonly http = inject(HttpClient);
-  private readonly apiUrl = '/api/livros';
+  private readonly apiUrl = environment.apiUrl;
 
   /** Retorna todos os livros cadastrados */
   getAll(): Observable<Livro[]> {
