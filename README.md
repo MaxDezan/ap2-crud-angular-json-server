@@ -90,10 +90,7 @@ A comunicação com a API é feita exclusivamente através de **Services** com `
 
 O projeto também está hospedado na Vercel para acesso público, utilizando uma Serverless Function como backend:
 
-🔗 **[Acessar aplicação](#)**
-
-> Substitua o link acima pela URL gerada após o deploy no Vercel.
-
+🔗 *https://ap2-crud-angular-json-server-pktuy83o0-maxdezans-projects.vercel.app/*
 ---
 
 ## Link do Vídeo Demonstrativo
