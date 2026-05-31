@@ -9,7 +9,7 @@ import { Livro } from '../models/livro';
 export class LivroService {
 
   private readonly http = inject(HttpClient);
-  private readonly apiUrl = 'http://localhost:3000/livros';
+  private readonly apiUrl = '/api/livros';
 
   /** Retorna todos os livros cadastrados */
   getAll(): Observable<Livro[]> {

@@ -1,0 +1,8 @@
+{
+  "buildCommand": "ng build",
+  "outputDirectory": "dist/ap2-crud-angular-json-server/browser",
+  "rewrites": [
+    { "source": "/api/livros/:id", "destination": "/api/livros?id=:id" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
